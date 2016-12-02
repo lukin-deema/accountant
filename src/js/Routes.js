@@ -1,12 +1,10 @@
-/**
- * Created by Lukin on 27.09.2016.
- */
 import React from "react";
+import ExpenseList from "./components/ExpenseList";
 
 export const getAppRoutes = () => {
     const appRoutes = {
         path: '/',
-        component: ()=> <div>asdaf</div>
+        component: ()=> {return <ExpenseList />}
     };
     return appRoutes;
 };

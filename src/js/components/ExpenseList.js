@@ -4,7 +4,8 @@ import Expense from '../model/Expense';
 import Append from './Append';
 
 export default class ExpenseList extends React.Component {
-    constructor(){
+    constructor(props){
+        super(props);
         this.state = {
             expenses: []
         }
@@ -21,8 +22,11 @@ export default class ExpenseList extends React.Component {
                     <Append Insert={this.insert} />
                 </div>
                 <div>
-                    {this.state.expenses.map(x=>
-                        <ExpenseListItem isIncome={x.getIsIncome()} value={x.getValue()}/>
+                    {this.state.expenses.map((x, i)=> {
+                            return <ExpenseListItem key={i}
+                                                    isIncome={x.getIsIncome()}
+                                                    value={x.getValue()}/>
+                        }
                     )}
                 </div>
             </div>

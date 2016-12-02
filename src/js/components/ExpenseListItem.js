@@ -11,7 +11,7 @@ export default class ExpenseListItem extends React.Component {
     };
     render() {
         return (
-            <div style={{'color':this.props.isIncome?"green":"red"}}>
+            <div style={{'border':this.props.isIncome? "green solid 1px":"red solid 1px"}}>
                 {this.props.value}
             </div>
         )
