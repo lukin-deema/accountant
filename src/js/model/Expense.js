@@ -10,4 +10,7 @@ export default class Expense {
     getIsIncome(){
         return this.isIncome;
     }
+    parse(){
+        return {value: this.value, isIncome: this.isIncome};
+    }
 }
