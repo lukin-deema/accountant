@@ -1,22 +1,21 @@
 import React from "react";
-import Expense from "../model/Expense";
 
 export default class Append extends React.Component {
     static defaultProps = {
-        Insert: ()=>{ }
+        fnInsert: ()=>{ }
     };
     static propTypes = {
-        Insert: React.PropTypes.func,
+        fnInsert: React.PropTypes.func,
     };
     insert = () => {
-        const value = this.refs.num.value;
+        const value = this.refs.value.value;
         const isIncome = this.refs.check.checked;
-        this.props.Insert(value, isIncome);
+        this.props.fnInsert(value, isIncome);
     };
     render() {
         return (
             <form onSubmit={this.insert}>
-                <input type="number" ref="num" />
+                <input type="number" ref="value" />
                 <input type="checkbox" ref="check" />
                 <button type="submit">Add</button>
             </form>

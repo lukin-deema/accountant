@@ -10,25 +10,35 @@ export default class ExpenseList extends React.Component {
             expenses: []
         }
     }
-    insert = (value, isIncome) => {
+    onInsert = (value, isIncome) => {
         const {expenses} = this.state;
         expenses.push(new Expense(isIncome, value));
-        this.setState({expenses: expenses});
+        this.setState({expenses});
+    };
+    onDelete = (id)=>{
+        const {expenses} = this.state;
+        expenses.splice(id,1);
+        this.setState({expenses});
     };
     render() {
+        const {expenses} = this.state;
         return (
-            <div>
+            <div className="ExpenseList">
                 <div>
-                    <Append Insert={this.insert} />
+                    <Append fnInsert={this.onInsert} />
                 </div>
-                <div>
-                    {this.state.expenses.map((x, i)=> {
-                            return <ExpenseListItem key={i}
-                                                    isIncome={x.getIsIncome()}
-                                                    value={x.getValue()}/>
+                <ul>
+                    {expenses.map((x, i)=> {
+                            return <li key={i}>
+                                <ExpenseListItem id={i}
+                                                 isIncome={x.getIsIncome()}
+                                                 value={x.getValue()}
+                                                 fnDelete={this.onDelete}
+                                />
+                            </li>
                         }
                     )}
-                </div>
+                </ul>
             </div>
         )
     }
