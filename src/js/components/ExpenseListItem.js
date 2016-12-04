@@ -17,10 +17,10 @@ export default class ExpenseListItem extends React.Component {
         this.props.fnDelete(this.props.id);
     };
     render() {
-        const style = {'border': (this.props.isIncome?"green":"red") + " solid 1px"};
+        const predicate = this.props.isIncome?"+":"-";
         return (
-            <div className="ExpenseListItem" style={style}>
-                <div className="ExpenseListItemValue" >{this.props.value}</div>
+            <div className="ExpenseListItem">
+                <div className="ExpenseListItemValue" >{predicate}{this.props.value}</div>
                 <button onClick={this.onDelete}>Delete</button>
             </div>
         )
